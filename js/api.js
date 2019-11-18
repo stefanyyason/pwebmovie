@@ -8,10 +8,14 @@ function status(response){
   }else{
     //Mengubah suatu objek menjadi Promise agar bisa "di-then-kan"
     return response.json();
+    }
   }
   //Blok kode untuk mem-parsing json menjadi array javascript
   function json(response){
     return response.json();
   }
-  
-}
+  //Blok kode untuk meng-handle kesalahan di blok catch
+  function error(error){
+    //Parameter error berasal dari Promise.reject()
+    console.log("Error: "+error);
+  }
