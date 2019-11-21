@@ -7,7 +7,7 @@ function status(response){
     return Promise.reject(new Error(response.statusText));
   }else{
     //Mengubah suatu objek menjadi Promise agar bisa "di-then-kan"
-    return response.json();
+    return Promise.resolve(response);
     }
   }
   //Blok kode untuk mem-parsing json menjadi array javascript
