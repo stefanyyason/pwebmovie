@@ -55,7 +55,7 @@
                   <h4 id="section_title">Now Playing</h4>
 
                   <div class="row">
-                    <div id="movie_list">
+                    <div id="movie_detail">
                     </div>
                   </div>
                 </div>
@@ -64,35 +64,16 @@
                   <script type="text/javascript" src="js/materialize.min.js"></script>
                   <script type="text/javascript" src="js/init.js"></script>
                   <script type="text/javascript" src="js/api.js"></script>
-
                   <script type="text/javascript" src="js/tmdb.js"></script>
+
                   <script type="text/javascript">
 
                     document.addEventListener("DOMContentLoaded", function(){
-                      var page = window.location.hash.substr(1);
-
-                      document.querySelectorAll(".topnav a, .sidenav a")
-                      .forEach(function(element){
-
-                        element.addEventListener("click", function(event){
-                          page=event.target.getAttribute("href").substr(1);
-                          switch(page){
-                            case "playing":
-                              getListMovie("/movie/now_playing", "Now Playing");
-                              break;
-                            case "upcoming":
-                              getListMovie("/movie/upcoming", "Up Coming");
-                              break;
-                            case "popular":
-                              getListMovie("/movie/popular", "Popular");
-                              break;
-                            case "toprated":
-                              getListMovie("/movie/top_rated", "Top Rated");
-                              break;
-                          }
-                        });
+                      var urlParams = new URLSearchParams(window.location.search);
+                      var id = urlParams.get("id");
+                      getMovie(id);
                       });
-                      getListMovie("/movie/now_playing", "Now Playing");
+                      //getListMovie("/movie/now_playing", "Movie");
                     });
 
           </script>
